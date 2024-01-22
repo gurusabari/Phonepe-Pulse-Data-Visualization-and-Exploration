@@ -115,28 +115,28 @@ aggre_transaction = pd.DataFrame(columns1)
         
    **Creating tables**
    
-create_query1 = '''CREATE TABLE if not exists aggregated_transaction (States varchar(50),
-                                                                      Years int,
-                                                                      Quarter int,
-                                                                      Transaction_type varchar(50),
-                                                                      Transaction_count bigint,
-                                                                      Transaction_amount bigint
-                                                                      )'''
-cursor.execute(create_query1)
-mydb.commit()
-
-for index,row in aggre_transaction.iterrows():
-    insert_query1 = '''INSERT INTO aggregated_transaction (States, Years, Quarter, Transaction_type, Transaction_count, Transaction_amount)
-                                                        values(%s,%s,%s,%s,%s,%s)'''
-    values = (row["States"],
-              row["Years"],
-              row["Quarter"],
-              row["Transaction_type"],
-              row["Transaction_count"],
-              row["Transaction_amount"]
-              )
-    cursor.execute(insert_query1,values)
-    mydb.commit()
+      create_query1 = '''CREATE TABLE if not exists aggregated_transaction (States varchar(50),
+                                                                            Years int,
+                                                                            Quarter int,
+                                                                            Transaction_type varchar(50),
+                                                                            Transaction_count bigint,
+                                                                            Transaction_amount bigint
+                                                                            )'''
+      cursor.execute(create_query1)
+      mydb.commit()
+      
+      for index,row in aggre_transaction.iterrows():
+          insert_query1 = '''INSERT INTO aggregated_transaction (States, Years, Quarter, Transaction_type, Transaction_count, Transaction_amount)
+                                                              values(%s,%s,%s,%s,%s,%s)'''
+          values = (row["States"],
+                    row["Years"],
+                    row["Quarter"],
+                    row["Transaction_type"],
+                    row["Transaction_count"],
+                    row["Transaction_amount"]
+                    )
+          cursor.execute(insert_query1,values)
+          mydb.commit()
     
  ### Step 5:
  
